@@ -82,14 +82,48 @@ function criarContatos(contato, index, ultimaMensagem, mensagensNaoLida) {
 
     card.append(foto,nome, horario, previa);
 
-    listaContatos.append(cardContainer);
-elemento.lista_contatos.append(cardContato);
+     if (mensagensNaoLidas > 0) {
 
-  cardContato.addEventListener("click", () => {
-  mostrarConversa(0, idContato); 
-});
+        const bola = document.createElement("div");
+
+        bola.className = "bola";
+
+        const numero = document.createElement("p");
+
+        numero.innerText = mensagensNaoLidas;
+
+        bola.append(numero);
+
+        card.append(bola);
+    }
+
+
+    // Quando clicar no contato
+    card.addEventListener("click", () => {
+
+        mostrarConversa(usuarioAtual, index);
+
+    });
+  
+
+    listaContatos.append(card);
 
 }
+
+function mostrarConversa(usuarioId, contatoId) {
+
+    usuarioAtual = usuarioId;
+    contatoAtual = contatoId;
+
+    const usuario = listaUsuarios[usuarioId];
+
+    const contato = usuario.contacts[contatoId];
+
+    if (!contato) {
+        return;
+    }
+
+
 
 contatos(0).forEach((element, index) => {
   const mensagensRecebidas = element.messages.filter(
