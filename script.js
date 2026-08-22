@@ -163,6 +163,7 @@ contatosContainer.classList.remove("ocultar");
     formularioChat.style.display = "block";
 
     mensagensChat.scrollTop = mensagensChat.scrollHeight;
+}
 
 function mostrarPerfil()
     {
