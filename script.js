@@ -184,14 +184,16 @@ function mostrarPerfil()
     telefonePerfil.innerText = usuario.number;
 
     fotoPerfil.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
+
+        atualizarFotoUsuario();
+
+        
 }
 function atualizarFotoUsuario() {
 
     fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
 
 }
-
-  
     
 function fecharPerfil() {
 
@@ -319,8 +321,6 @@ container.append(foto, nome);
 }
 
 atualizarFotoUsuario();
-
-fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
 
 mostrarContatos(usuarioAtual);
 
