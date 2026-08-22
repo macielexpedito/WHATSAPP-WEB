@@ -185,6 +185,24 @@ function mostrarPerfil()
 
     fotoPerfil.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
 }
+function atualizarFotoUsuario() {
+
+    fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
+
+}
+
+foto.addEventListener("click", () => {
+
+    usuarioAtual = index;
+
+    contatoAtual = 0;
+
+    atualizarFotoUsuario();
+
+    mostrarContatos(usuarioAtual);
+
+    mostrarConversa(usuarioAtual, contatoAtual);
+});
   
     
 function fecharPerfil() {
@@ -205,8 +223,6 @@ function fecharPerfil() {
 
     mostrarContatos(usuarioAtual);
 
-    // Se já existe um contato selecionado,
-    // abre novamente a conversa.
     mostrarConversa(usuarioAtual, contatoAtual);
 
 });
@@ -312,7 +328,7 @@ container.append(foto, nome);
 
 }
 
-
+atualizarFotoUsuario();
 mostrarContatos(usuarioAtual);
 
 mostrarConversa(usuarioAtual, contatoAtual);
