@@ -191,20 +191,6 @@ function atualizarFotoUsuario() {
 
 }
 
-foto.addEventListener("click", () => {
-
-    usuarioAtual = index;
-
-    contatoAtual = 0;
-    
-    fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
-
-    atualizarFotoUsuario();
-
-    mostrarContatos(usuarioAtual);
-
-    mostrarConversa(usuarioAtual, contatoAtual);
-});
   
     
 function fecharPerfil() {
@@ -317,6 +303,8 @@ container.append(foto, nome);
             usuarioAtual = index;
 
             contatoAtual = 0;
+
+            atualizarFotoUsuario();
 
             mostrarContatos(usuarioAtual);
 
