@@ -69,7 +69,7 @@ function criarContatos(contato, index, ultimaMensagem, mensagensNaoLida) {
     const horario = document.createElement('p');
     const previa = document.createElement('p');
 
-    foto.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
+    foto.src = `https://i.pravatar.cc/150?img=${5 + index}`;
     foto.alt = contato.name;
 
    nome.innerText = contato.name;
@@ -126,7 +126,7 @@ function mostrarConversa(usuarioId, contatoId) {
 
     // Enquanto não existem fotos individuaisestou usando a imagem padrão.
     
-    fotoHeader.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
+    fotoHeader.src =  `https://i.pravatar.cc/150?img=${5 + contatoId}`;
 
     fotoHeader.alt = contato.name;
 
@@ -164,7 +164,7 @@ contatosContainer.classList.remove("ocultar");
 
     mensagensChat.scrollTop = mensagensChat.scrollHeight;
 
-function mostarPerfil()
+function mostrarPerfil()
     {
 
     const usuario = listaUsuarios[usuarioAtual];
@@ -182,8 +182,9 @@ function mostarPerfil()
 
     telefonePerfil.innerText = usuario.number;
 
-    fotoPerfil.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
+    fotoPerfil.src = `https://i.pravatar.cc/150?img=${5 + contatoId}`;
 }
+    mostrarPerfil();
     
 function fecharPerfil() {
 
@@ -239,7 +240,6 @@ formularioChat.addEventListener("submit", evento => {
     const contato = usuario.contacts[contatoAtual];
 
 
-    // Adiciona a mensagem aos dados
     contato.messages.push({
 
         sender: "me",
@@ -265,13 +265,27 @@ formularioChat.addEventListener("submit", evento => {
 
     function criarPerfis() {
 
-    listaPerfis.innerHTML = "";
+        listaPerfis.innerHTML = "";
 
-    listaUsuarios.forEach((usuario, index) => {
+        listaUsuarios.forEach((usuario, index) => {
+
+        const container = document.createElement("div");
+
+        container.className = "perfil-alternativo";
 
         const foto = document.createElement("img");
 
-        foto.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
+        foto.src = `https://i.pravatar.cc/150?img=${11 + index}`;
+
+        foto.alt = usuario.account;
+
+        const nome = document.createElement("p");
+
+        nome.innerText = usuario.account;
+
+container.append(foto, nome);
+
+        foto.src = `https://i.pravatar.cc/150?img=${11 + index}`;
 
         foto.alt = usuario.account;
 
@@ -295,7 +309,7 @@ formularioChat.addEventListener("submit", evento => {
   });
 
 
-        listaPerfis.append(foto);
+        listaPerfis.append(container);
 
     });
 
