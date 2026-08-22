@@ -257,13 +257,56 @@ formularioChat.addEventListener("submit", evento => {
     });
 
 
-    // Atualiza a conversa
     mostrarConversa(usuarioAtual, contatoAtual);
 
-    // Limpa input
     inputMensagem.value = "";
 
 });
+
+    function criarPerfis() {
+
+    listaPerfis.innerHTML = "";
+
+    listaUsuarios.forEach((usuario, index) => {
+
+        const foto = document.createElement("img");
+
+        foto.src = "./assets/imgs/perfil.png";
+
+        foto.alt = usuario.account;
+
+        foto.title = usuario.account;
+
+        foto.style.width = "50px";
+        foto.style.height = "50px";
+        foto.style.borderRadius = "50%";
+        foto.style.cursor = "pointer";
+
+
+        foto.addEventListener("click", () => {
+
+            usuarioAtual = index;
+
+            contatoAtual = 0;
+
+            mostrarContatos(usuarioAtual);
+
+            mostrarConversa(usuarioAtual, contatoAtual);
+  });
+
+
+        listaPerfis.append(foto);
+
+    });
+
+}
+
+
+mostrarContatos(usuarioAtual);
+
+mostrarConversa(usuarioAtual, contatoAtual);
+
+criarPerfis();
 
 
 
