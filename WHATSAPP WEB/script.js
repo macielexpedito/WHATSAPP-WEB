@@ -57,33 +57,30 @@ function mostrarContatos(usuarioId) {
 }
 
 
-function criarContatos(srcFoto, nome, horas, ultima, naoLidas) {
+function criarContatos(contato, index, ultimaMensagem, mensagensNaoLida) {
 
     //criação dos elementos do card do contato
-    const cardContainer = document.createElement('article');
-    const fotoContato = document.createElement("img");
-    const nomeContato = document.createElement("h2");
-    const horasMsg = document.createElement('p');
-    const ultimaMsg = document.createElement('p');
-    const msgNaoLidas =  document.createElement('p');
+    const card = document.createElement('article');
+    
+    card.className = "card-mensagem";
+    
+    const foto = document.createElement("img");
+    const nome = document.createElement("p");
+    const horario = document.createElement('p');
+    const previa = document.createElement('p');
 
-    //define quais classe css serão aplicadas para estilizar o elemento
-    cardContainer.className = "card-contato grid";
-    fotoContato.className = "foto-contato";
-    nomeContato.className = "nome-contato";
-    horasMsg.className =" horasMsg-Contato";
-    ultimaMsg.className = "ultimaMsg-contato";
-    msgNaoLidas.className = "msgNaoLidas-contato";
+    foto.src = "./assets/imgs/perfil.png";
+    foto.alt = contato.name;
 
-    //Preenche os dados que serão recebidos como parametro da função
-    fotoContato.src = srcFoto;
-    nomeContato.innerText = nome;
-    horasMsg.innerText = horas;
-    ultimaMsg.innerHTML = ultima;
-    msgNaoLidas.innerText = naoLidas;
+   nome.innerText = contato.name;
 
+    horario.className = "horario-mensagem";
+    horario.innerText = ultimaMensagem.time;
 
-    cardContainer.append(fotoContato,nomeContato, horasMsg, ultimaMsg, msgNaoLidas);
+    previa.className = "previa-mensagem";
+    previa.innerText = ultimaMensagem.content;
+
+    card.append(foto,nome, horario, previa);
 
     listaContatos.append(cardContainer);
 elemento.lista_contatos.append(cardContato);
