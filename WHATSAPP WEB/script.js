@@ -1,8 +1,9 @@
-import { listarContatosUsuario, listarMensagemDoUsuario, listarUsuario } from "./contatos.js";
-listarMensagemDoUsuario(1,1)
-listarUsuario(1)
-listarContatosUsuario(1)
+import { usuarios } from "./contatos.js";
 
+const listaUsuarios = usuarios["whats-users"];
+
+let usuarioAtual = 0;
+let contatoAtual = 0;
 
 const iconeMensagens = document.querySelector(".icone-mensagens");
 const fotoUsuario = document.querySelector(".foto-usuario-nav");
