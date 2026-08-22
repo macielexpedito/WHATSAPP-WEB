@@ -57,7 +57,7 @@ function mostrarContatos(usuarioId) {
 }
 
 
-function criarContatos(contato, index, ultimaMensagem, mensagensNaoLida) {
+function criarContatos(contato, index, ultimaMensagem, mensagensNaoLidas) {
 
     //criação dos elementos do card do contato
     const card = document.createElement('article');
