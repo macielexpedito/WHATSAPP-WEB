@@ -29,42 +29,33 @@ const telefonePerfil = document.querySelector(".usuario-telefone p");
 const listaPerfis = document.querySelector(".lista-perfis");
 
 
-iconeMensagens.addEventListener("click", () => {
+function mostrarContatos(usuarioId) {
 
-    contatos.classList.remove("ocultar");
-    perfil.classList.remove("ativo");
+    const usuario = listaUsuarios[usuarioId];
 
-    mensagensChat.style.display = "grid";
-    header.style.display = "flex";
-    formularioChat.style.display = "block";
+    listaContatos.innerHTML = "";
 
-});
+    usuario.contacts.forEach((contato, index) => {
 
-fotoUsuario.addEventListener("click", () => {
+        const mensagens = contato.messages;
 
-    perfil.classList.toggle("ativo");
+        const ultimaMensagem = mensagens[mensagens.length - 1];
 
-    if (perfil.classList.contains("ativo")) {
+        const mensagensRecebidas = mensagens.filter(
+            mensagem => mensagem.sender !== "me"
+        ).length;
 
-        
-        contatos.classList.add("ocultar");
 
-        mensagensChat.style.display = "none";
-        header.style.display = "none";
-        formularioChat.style.display = "none";
+        criarContato(
+            contato,
+            index,
+            ultimaMensagem,
+            mensagensRecebidas
+        );
 
-    } else {
+    });
+}
 
-        
-        contatos.classList.remove("ocultar");
-
-        mensagensChat.style.display = "grid";
-        header.style.display = "flex";
-        formularioChat.style.display = "block";
-
-    }
-
-});
 
 function criarContatos(srcFoto, nome, horas, ultima, naoLidas) {
 
