@@ -122,29 +122,149 @@ function mostrarConversa(usuarioId, contatoId) {
     if (!contato) {
         return;
     }
+  nomeHeader.innerText = contato.name;
+
+    // Enquanto não existem fotos individuaisestou usando a imagem padrão.
+    
+    fotoHeader.src = "./assets/imgs/perfil.png";
+
+    fotoHeader.alt = contato.name;
+
+    mensagensChat.innerHTML = "";
 
 
+contato.messages.forEach((mensagem => {
 
-contatos(0).forEach((element, index) => {
-  const mensagensRecebidas = element.messages.filter(
-    (msg) => msg.sender !== "me"
-  ).length;
+        const mensagemElemento = document.createElement("p");
 
-  criarContatos(
-    index,
-    element.name,
-    element.messages.at(-1).time,
-    element.messages.at(-1).content,
-    mensagensRecebidas
-  );
-});
-mostrarConversa(0, 0);
-// apaecer e desaparacerer perfil
-function mostarPerfil(){
-  elemento.foto_perfil.addEventListener('click', (evento) =>{
-    evento.preventDefault();
-    elemento.mensagems_perfil.classList.toggle("ocultar")
-    elemento.perfil.classList.toggle("ocultar")
-  })
+        mensagemElemento.innerText = mensagem.content;
+
+
+        if (mensagem.sender === "me") {
+
+            mensagemElemento.className = "enviadas";
+
+        } else {
+
+            mensagemElemento.className = "recebidas";
+
+        }
+
+
+        mensagensChat.append(mensagemElemento);
+
+    });
+
+contatosContainer.classList.remove("ocultar");
+    perfil.classList.remove("ativo");
+
+    header.style.display = "flex";
+    mensagensChat.style.display = "grid";
+    formularioChat.style.display = "block";
+
+    mensagensChat.scrollTop = mensagensChat.scrollHeight;
+
+function mostarPerfil()
+    {
+
+    const usuario = listaUsuarios[usuarioAtual];
+
+    perfil.classList.add("ativo");
+
+    contatosContainer.classList.add("ocultar");
+
+    header.style.display = "none";
+    mensagensChat.style.display = "none";
+    formularioChat.style.display = "none";
+
+
+    nomePerfil.innerText = usuario.account;
+
+    telefonePerfil.innerText = usuario.number;
+
+    fotoPerfil.src = "./assets/imgs/perfil.png";
 }
-mostarPerfil()
+    
+function fecharPerfil() {
+
+    perfil.classList.remove("ativo");
+
+    contatosContainer.classList.remove("ocultar");
+
+    header.style.display = "flex";
+    mensagensChat.style.display = "grid";
+    formularioChat.style.display = "block";
+
+}
+
+    iconeMensagens.addEventListener("click", () => {
+
+    fecharPerfil();
+
+    mostrarContatos(usuarioAtual);
+
+    // Se já existe um contato selecionado,
+    // abre novamente a conversa.
+    mostrarConversa(usuarioAtual, contatoAtual);
+
+});
+fotoUsuario.addEventListener("click", () => {
+
+    if (perfil.classList.contains("ativo")) {
+
+        fecharPerfil();
+
+    } else {
+
+        mostrarPerfil();
+
+    }
+
+});
+
+
+formularioChat.addEventListener("submit", evento => {
+
+    evento.preventDefault();
+
+    const texto = inputMensagem.value.trim();
+
+    if (texto === "") {
+        return;
+    }
+
+
+    const usuario = listaUsuarios[usuarioAtual];
+
+    const contato = usuario.contacts[contatoAtual];
+
+
+    // Adiciona a mensagem aos dados
+    contato.messages.push({
+
+        sender: "me",
+
+        content: texto,
+
+        time: new Date().toLocaleTimeString(
+            "pt-BR",
+            {
+                hour: "2-digit",
+                minute: "2-digit"
+            }
+        )
+
+    });
+
+
+    // Atualiza a conversa
+    mostrarConversa(usuarioAtual, contatoAtual);
+
+    // Limpa input
+    inputMensagem.value = "";
+
+});
+
+
+
+
