@@ -8,12 +8,26 @@ let contatoAtual = 0;
 const iconeMensagens = document.querySelector(".icone-mensagens");
 const fotoUsuario = document.querySelector(".foto-usuario-nav");
 
-const contatos = document.querySelector(".contatos");
+const contatosContainer = document.querySelector(".contatos");
 const perfil = document.querySelector(".usuario-perfil");
+
+const listaContatos = document.querySelector(".container-mensagens");
 
 const header = document.querySelector("main > header");
 const mensagensChat = document.querySelector(".grid-msg");
 const formularioChat = document.querySelector("main > form");
+
+const fotoHeader = document.querySelector(".foto-header-container img");
+const nomeHeader = document.querySelector(".foto-header-container p");
+
+const inputMensagem = document.querySelector("#send-msg");
+
+const fotoPerfil = document.querySelector(".usuario-foto img");
+const nomePerfil = document.querySelector(".usuario-nome p:last-child");
+const telefonePerfil = document.querySelector(".usuario-telefone p");
+
+const listaPerfis = document.querySelector(".lista-perfis");
+
 
 iconeMensagens.addEventListener("click", () => {
 
