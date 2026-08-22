@@ -196,6 +196,8 @@ foto.addEventListener("click", () => {
     usuarioAtual = index;
 
     contatoAtual = 0;
+    
+    fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
 
     atualizarFotoUsuario();
 
@@ -329,6 +331,9 @@ container.append(foto, nome);
 }
 
 atualizarFotoUsuario();
+
+fotoUsuario.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
+
 mostrarContatos(usuarioAtual);
 
 mostrarConversa(usuarioAtual, contatoAtual);
