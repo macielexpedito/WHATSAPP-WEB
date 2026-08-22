@@ -69,7 +69,7 @@ function criarContatos(contato, index, ultimaMensagem, mensagensNaoLida) {
     const horario = document.createElement('p');
     const previa = document.createElement('p');
 
-    foto.src = "./assets/imgs/perfil.png";
+    foto.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
     foto.alt = contato.name;
 
    nome.innerText = contato.name;
@@ -126,7 +126,7 @@ function mostrarConversa(usuarioId, contatoId) {
 
     // Enquanto não existem fotos individuaisestou usando a imagem padrão.
     
-    fotoHeader.src = "./assets/imgs/perfil.png";
+    fotoHeader.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
 
     fotoHeader.alt = contato.name;
 
@@ -182,7 +182,7 @@ function mostarPerfil()
 
     telefonePerfil.innerText = usuario.number;
 
-    fotoPerfil.src = "./assets/imgs/perfil.png";
+    fotoPerfil.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
 }
     
 function fecharPerfil() {
@@ -271,7 +271,7 @@ formularioChat.addEventListener("submit", evento => {
 
         const foto = document.createElement("img");
 
-        foto.src = "./assets/imgs/perfil.png";
+        foto.src = "./WHATSAPP WEB/assets/imgs/perfil.png";
 
         foto.alt = usuario.account;
 
