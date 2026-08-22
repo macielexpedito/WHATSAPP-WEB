@@ -327,7 +327,7 @@ input:focus {
 main {
   grid-column: 3;
   grid-row: 1;
-  background-image: url(imgs/whatsapp_bg.png);
+  background-image: url("./WHATSAPP WEB/assets/imgs/whatsapp_bg.png");
   height: 100%;
   width: 100%;
   display: flex;
