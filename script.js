@@ -46,7 +46,7 @@ function mostrarContatos(usuarioId) {
         ).length;
 
 
-        criarContato(
+        criarContatos(
             contato,
             index,
             ultimaMensagem,
@@ -133,7 +133,7 @@ function mostrarConversa(usuarioId, contatoId) {
     mensagensChat.innerHTML = "";
 
 
-contato.messages.forEach((mensagem => {
+contato.messages.forEach((mensagem) => {
 
         const mensagemElemento = document.createElement("p");
 
@@ -182,9 +182,9 @@ function mostrarPerfil()
 
     telefonePerfil.innerText = usuario.number;
 
-    fotoPerfil.src = `https://i.pravatar.cc/150?img=${5 + contatoId}`;
+    fotoPerfil.src = `https://i.pravatar.cc/150?img=${11 + usuarioAtual}`;
 }
-    mostrarPerfil();
+  
     
 function fecharPerfil() {
 
@@ -284,10 +284,6 @@ formularioChat.addEventListener("submit", evento => {
         nome.innerText = usuario.account;
 
 container.append(foto, nome);
-
-        foto.src = `https://i.pravatar.cc/150?img=${11 + index}`;
-
-        foto.alt = usuario.account;
 
         foto.title = usuario.account;
 
